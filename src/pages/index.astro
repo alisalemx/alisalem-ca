@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Content, frontmatter } from "../content/profile.md";
+import envelopeIcon from "@phosphor-icons/core/regular/envelope-simple.svg?raw";
+import githubIcon from "@phosphor-icons/core/regular/github-logo.svg?raw";
+import linkedinIcon from "@phosphor-icons/core/regular/linkedin-logo.svg?raw";
+import xIcon from "@phosphor-icons/core/regular/x-logo.svg?raw";
+
+const { name, title, summary, links, roles } = frontmatter;
+const pageTitle = `${name} - ${title}`;
+const iconByLabel = {
+  GitHub: githubIcon,
+  X: xIcon,
+  LinkedIn: linkedinIcon,
+  Email: envelopeIcon
+};
+
+const withIconClass = (svg, className) => svg.replace("<svg ", `<svg class="${className}" aria-hidden="true" focusable="false" `);
+const withIconGradient = (svg, id) =>
+  withIconClass(svg, "contact-icon contact-icon-gradient")
+    .replace("><path", `><defs><linearGradient id="${id}" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FF2D55"/><stop offset="45%" stop-color="#FF8A00"/><stop offset="100%" stop-color="#C43CFF"/></linearGradient></defs><path`)
+    .replace('fill="currentColor"', `fill="url(#${id})"`);
+---
+
+<BaseLayout title={pageTitle} description={summary}>
+  <main class="mx-auto w-full max-w-[42.5rem] px-4 py-10 md:px-8 md:py-16">
+    <header class="flex min-h-[44vh] flex-col justify-center pb-10 pt-2 md:min-h-[52vh] md:pb-16 md:pt-4" aria-labelledby="intro-title">
+      <a class="home-logo-link mb-9 block h-10 w-10 text-ink md:mb-14" href="/" aria-label="Ali Salem home">
+        <svg class="h-full w-full" viewBox="0 0 34 34" role="img" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="home-logo-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF2D55" />
+              <stop offset="45%" stop-color="#FF8A00" />
+              <stop offset="100%" stop-color="#C43CFF" />
+            </linearGradient>
+          </defs>
+          <path
+            class="home-logo-fill"
+            fill-rule="evenodd"
+            d="M34,0 L34,34 L0,34 L0,0 L34,0 Z M19.4754653,6 L14.4686971,6 L6,28 L11.7884941,28 L13.2402707,23.4972527 L20.7038917,23.4972527 L22.1556684,28 L28,28 L19.4754653,6 Z"
+          />
+        </svg>
+      </a>
+      <h1 id="intro-title" class="mb-6 max-w-[9ch] font-serif text-[3.6rem] leading-[0.92] text-ink md:text-[4.85rem]">
+        {name}
+      </h1>
+      <p class="max-w-[38rem] font-serif text-[1.28rem] leading-[1.28] text-ink md:text-[1.48rem]">{summary}</p>
+      <nav class="mt-7 flex flex-wrap gap-x-6 gap-y-3" aria-label="Contact links">
+        {
+          links.map((link) => {
+            const icon = iconByLabel[link.label];
+            const gradientId = `contact-icon-${link.label.toLowerCase()}-gradient`;
+
+            return (
+              <a class="contact-link" href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined} aria-label={link.label}>
+                <span set:html={withIconClass(icon, "contact-icon contact-icon-base")} />
+                <span set:html={withIconGradient(icon, gradientId)} />
+              </a>
+            );
+          })
+        }
+      </nav>
+    </header>
+
+    <section class="border-t border-rule py-10 md:py-12" aria-labelledby="about-title">
+      <h2 id="about-title" class="mb-5 font-serif text-[1.75rem] leading-tight text-ink">About</h2>
+      <div class="prose-content max-w-[38rem]">
+        <Content />
+      </div>
+    </section>
+
+    <section class="border-t border-rule py-10 md:py-12" aria-labelledby="experience-title">
+      <h2 id="experience-title" class="mb-7 font-serif text-[1.75rem] leading-tight text-ink">Selected Work</h2>
+      <ol class="space-y-9">
+        {
+          roles.map((item) => (
+            <li>
+              <div class="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-[0.8rem] leading-snug text-muted">
+                <span>{item.period}</span>
+                <span>{item.location}</span>
+              </div>
+              <div class="max-w-[38rem]">
+                <h3 class="mb-1 font-serif text-[1.55rem] leading-tight text-ink">
+                  {item.url ? (
+                    <a class="gradient-link" href={item.url} target="_blank" rel="noreferrer" data-label={item.company}>
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
+                </h3>
+                <p class="mb-3 text-[0.9rem] leading-snug text-muted">{item.role}</p>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </main>
+</BaseLayout>
