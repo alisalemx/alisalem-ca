@@ -162,6 +162,12 @@
     color: var(--color-ink);
   }
 
+  .contact-link::before {
+    content: "";
+    position: absolute;
+    inset: -0.575rem;
+  }
+
   .contact-icon {
     position: absolute;
     inset: 0;
