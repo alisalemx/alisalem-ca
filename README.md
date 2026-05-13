@@ -9,8 +9,6 @@ npm install
 npm run dev
 ```
 
-The site has no runtime environment dependencies. Keep `.env` files and Cloudflare secrets out of the repo.
-
 ## Scripts
 
 - `npm run dev` starts the local Astro dev server.
