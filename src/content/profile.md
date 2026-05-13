@@ -37,15 +37,15 @@ roles:
     period: May 2018-Feb 2019
     location: Toronto, ON
     description: Partnered with product managers, transformation leads, and engineers to shape product strategies and launch digital experiences for media and financial-services clients in Canada and internationally.
-  - company: Fjord
-    url: https://fjordnet.com
+  - company: Fjord (Acq. Accenture)
+    url: https://www.accenture.com/us-en/about/accenture-song-index
     role: Visual Design Consultant
     period: Jun 2016-Mar 2018
     location: Dubai, UAE
     descriptionHtml: >-
       Worked with a 15-plus person team across service, interaction, and visual design on several projects for UAE’s biggest telecom provider, <a class="gradient-link" href="https://etisalat.ae" target="_blank" rel="noreferrer" data-label="Etisalat">Etisalat</a>. Our work covered digital touchpoints from mobile devices to 120-plus inch touch screens. I also led Etisalat's design system effort, helping the team create more consistent experiences across those surfaces.
-  - company: Tigerspike
-    url: https://tigerspike.com
+  - company: Tigerspike (Acq. Concentrix)
+    url: https://www.concentrix.com/
     role: Sr. UI Designer
     period: Apr 2015-May 2016
     location: Dubai, UAE
