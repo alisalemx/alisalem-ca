@@ -19,20 +19,26 @@ const iconByLabel = {
 const withIconClass = (svg, className) => svg.replace("<svg ", `<svg class="${className}" aria-hidden="true" focusable="false" `);
 const withIconGradient = (svg, id) =>
   withIconClass(svg, "contact-icon contact-icon-gradient")
-    .replace("><path", `><defs><linearGradient id="${id}" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FF2D55"><animate attributeName="stop-color" values="#FF2D55;#FF8A00;#C43CFF;#FF2D55" dur="1.8s" repeatCount="indefinite"/></stop><stop offset="45%" stop-color="#FF8A00"><animate attributeName="stop-color" values="#FF8A00;#C43CFF;#FF2D55;#FF8A00" dur="1.8s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#C43CFF"><animate attributeName="stop-color" values="#C43CFF;#FF2D55;#FF8A00;#C43CFF" dur="1.8s" repeatCount="indefinite"/></stop></linearGradient></defs><path`)
+    .replace("><path", `><defs><linearGradient id="${id}" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FF2D55"><animate attributeName="stop-color" values="#FF2D55;#FF8A00;#C43CFF;#FF2D55" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop><stop offset="45%" stop-color="#FF8A00"><animate attributeName="stop-color" values="#FF8A00;#C43CFF;#FF2D55;#FF8A00" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#C43CFF"><animate attributeName="stop-color" values="#C43CFF;#FF2D55;#FF8A00;#C43CFF" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop></linearGradient></defs><path`)
     .replace('fill="currentColor"', `fill="url(#${id})"`);
 ---
 
 <BaseLayout title={pageTitle} description={summary}>
   <main class="mx-auto w-full max-w-[42.5rem] px-4 py-10 md:px-8 md:py-16">
-    <header class="flex min-h-[44vh] flex-col justify-center pb-10 pt-2 md:min-h-[52vh] md:pb-16 md:pt-4" aria-labelledby="intro-title">
+    <header class="flex min-h-[38vh] flex-col justify-center pb-6 pt-2 md:min-h-[46vh] md:pb-10 md:pt-4" aria-labelledby="intro-title">
       <a class="home-logo-link mb-9 block h-10 w-10 text-ink md:mb-14" href="/" aria-label="Ali Salem home">
         <svg class="h-full w-full" viewBox="0 0 34 34" role="img" aria-hidden="true" focusable="false">
           <defs>
             <linearGradient id="home-logo-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#FF2D55" />
-              <stop offset="45%" stop-color="#FF8A00" />
-              <stop offset="100%" stop-color="#C43CFF" />
+              <stop offset="0%" stop-color="#FF2D55">
+                <animate attributeName="stop-color" values="#FF2D55;#FF8A00;#C43CFF;#FF2D55" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="45%" stop-color="#FF8A00">
+                <animate attributeName="stop-color" values="#FF8A00;#C43CFF;#FF2D55;#FF8A00" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="100%" stop-color="#C43CFF">
+                <animate attributeName="stop-color" values="#C43CFF;#FF2D55;#FF8A00;#C43CFF" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/>
+              </stop>
             </linearGradient>
           </defs>
           <path
@@ -63,7 +69,7 @@ const withIconGradient = (svg, id) =>
       </nav>
     </header>
 
-    <section class="py-10 md:py-12" aria-labelledby="experience-title">
+    <section class="pb-10 pt-6 md:pb-12 md:pt-8" aria-labelledby="experience-title">
       <h2 id="experience-title" class="mb-8 font-serif text-[2.4rem] leading-tight text-ink md:text-[3rem]">Experience</h2>
       <ol class="space-y-9">
         {
