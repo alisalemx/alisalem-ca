@@ -56,8 +56,18 @@
 
   a {
     color: inherit;
+    text-decoration-line: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    text-decoration-line: none;
   }
 
   :focus-visible {
