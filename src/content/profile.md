@@ -64,7 +64,7 @@ roles:
     period: Nov 2012-Sep 2013
     location: Dubai, UAE
     descriptionHtml: >-
-      Worked across UI design and front-end development for retail and hospitality brands, then joined the e-commerce team to redesign key sections of <a class="gradient-link" href="https://landmarkshops.com" target="_blank" rel="noreferrer" data-label="LandmarkShops">LandmarkShops</a> and support growth across the online shopping experience.
+      Worked across UI design and front-end development for retail and hospitality brands, then joined the e-commerce team to redesign key sections of LandmarkShops and support growth across the online shopping experience.
   - company: USYTech
     url: https://usytech.com
     role: UI Designer & Developer
