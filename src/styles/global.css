@@ -71,7 +71,7 @@
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    padding: 24px;
+    padding: 20px;
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
