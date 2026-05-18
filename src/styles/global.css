@@ -6,7 +6,7 @@
   --color-paper: oklch(97.1% 0.006 84.5);
   --color-ink: oklch(19.6% 0 0);
   --color-muted: oklch(52.5% 0.01 84.6);
-  --color-rule: oklch(87.1% 0.015 84.5);
+  --color-rule: oklch(64% 0.015 84.5);
   --color-accent: oklch(56.9% 0.234 29.2);
   --transition-duration: 200ms;
   --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -129,8 +129,8 @@
       color-scheme: dark;
       --color-paper: oklch(21% 0.008 84.6);
       --color-ink: oklch(80.6% 0.016 86.4);
-      --color-muted: oklch(56.4% 0.018 86.4);
-      --color-rule: oklch(28.7% 0.015 84.5);
+      --color-muted: oklch(61% 0.018 86.4);
+      --color-rule: oklch(51% 0.015 84.5);
       --color-accent: oklch(66.4% 0.223 25.7);
     }
   }
