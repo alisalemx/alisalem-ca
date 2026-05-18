@@ -15,19 +15,19 @@
 @property --gradient-color-1 {
   syntax: '<color>';
   initial-value: oklch(64.1% 0.275 312.9);
-  inherits: false;
+  inherits: true;
 }
 
 @property --gradient-color-2 {
   syntax: '<color>';
   initial-value: oklch(65% 0.238 17.9);
-  inherits: false;
+  inherits: true;
 }
 
 @property --gradient-color-3 {
   syntax: '<color>';
   initial-value: oklch(74.7% 0.18 57.4);
-  inherits: false;
+  inherits: true;
 }
 
 @keyframes gradient-cycle {
@@ -148,9 +148,10 @@
   .contact-link {
     position: relative;
     display: inline-flex;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.625rem;
+    height: 1.625rem;
     color: var(--color-ink);
+    overflow: visible;
   }
 
   .contact-link::before {
@@ -159,29 +160,63 @@
     inset: -0.575rem;
   }
 
-  .contact-icon {
-    position: absolute;
-    inset: 0;
+  .contact-icon-wrap {
+    display: block;
     width: 100%;
     height: 100%;
+    line-height: 0;
+    overflow: visible;
+  }
+
+  .contact-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    overflow: visible;
+    animation: gradient-cycle 3s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+    --gradient-color-1: var(--color-ink);
+    --gradient-color-2: var(--color-ink);
+    --gradient-color-3: var(--color-ink);
+    transition:
+      --gradient-color-1 var(--transition-duration) var(--transition-ease),
+      --gradient-color-2 var(--transition-duration) var(--transition-ease),
+      --gradient-color-3 var(--transition-duration) var(--transition-ease);
+  }
+
+  .contact-icon-stop-1 {
+    stop-color: var(--gradient-color-1);
+  }
+
+  .contact-icon-stop-2 {
+    stop-color: var(--gradient-color-2);
+  }
+
+  .contact-icon-stop-3 {
+    stop-color: var(--gradient-color-3);
+  }
+
+  .contact-icon-base-path,
+  .contact-icon-gradient-fill {
     transition: opacity var(--transition-duration) var(--transition-ease);
   }
 
-  .contact-icon-base {
+  .contact-icon-base-path {
+    fill: currentColor;
     opacity: 1;
   }
 
-  .contact-icon-gradient {
+  .contact-icon-gradient-fill {
     opacity: 0;
   }
 
-  .contact-link:hover .contact-icon-base,
-  .contact-link:focus-visible .contact-icon-base {
+  .contact-link:hover .contact-icon-base-path,
+  .contact-link:focus-visible .contact-icon-base-path {
     opacity: 0;
   }
 
-  .contact-link:hover .contact-icon-gradient,
-  .contact-link:focus-visible .contact-icon-gradient {
+  .contact-link:hover .contact-icon-gradient-fill,
+  .contact-link:focus-visible .contact-icon-gradient-fill {
     opacity: 1;
   }
 

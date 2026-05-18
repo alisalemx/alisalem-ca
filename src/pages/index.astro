@@ -18,9 +18,10 @@ const iconByLabel = {
 
 const withIconClass = (svg, className) => svg.replace("<svg ", `<svg class="${className}" aria-hidden="true" focusable="false" `);
 const withIconGradient = (svg, id) =>
-  withIconClass(svg, "contact-icon contact-icon-gradient")
-    .replace("><path", `><defs><linearGradient id="${id}" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="oklch(64.1% 0.275 312.9)"><animate attributeName="stop-color" values="oklch(64.1% 0.275 312.9);oklch(65% 0.238 17.9);oklch(74.7% 0.18 57.4);oklch(64.1% 0.275 312.9)" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop><stop offset="45%" stop-color="oklch(65% 0.238 17.9)"><animate attributeName="stop-color" values="oklch(65% 0.238 17.9);oklch(74.7% 0.18 57.4);oklch(64.1% 0.275 312.9);oklch(65% 0.238 17.9)" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="oklch(74.7% 0.18 57.4)"><animate attributeName="stop-color" values="oklch(74.7% 0.18 57.4);oklch(64.1% 0.275 312.9);oklch(65% 0.238 17.9);oklch(74.7% 0.18 57.4)" keyTimes="0;0.33;0.66;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline" dur="3s" repeatCount="indefinite"/></stop></linearGradient></defs><path`)
-    .replace('fill="currentColor"', `fill="url(#${id})"`);
+  withIconClass(svg, "contact-icon")
+    .replace("<svg ", `<svg style="--contact-icon-gradient: url(#${id});" `)
+    .replace('fill="currentColor"', 'fill="currentColor"')
+    .replace(/><path([^>]*)\/>/, `><defs><linearGradient id="${id}" x1="0%" y1="100%" x2="100%" y2="0%"><stop class="contact-icon-stop-1" offset="0%"/><stop class="contact-icon-stop-2" offset="45%"/><stop class="contact-icon-stop-3" offset="100%"/></linearGradient><mask id="${id}-mask" maskUnits="userSpaceOnUse" x="-16" y="-16" width="288" height="288"><path$1 fill="white"/></mask></defs><path class="contact-icon-base-path"$1/><rect class="contact-icon-gradient-fill" x="-16" y="-16" width="288" height="288" fill="url(#${id})" mask="url(#${id}-mask)"/>`);
 ---
 
 <BaseLayout title={pageTitle} description={seoDescription ?? summary}>
@@ -60,8 +61,7 @@ const withIconGradient = (svg, id) =>
 
             return (
               <a class="contact-link" href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined} aria-label={link.label}>
-                <span set:html={withIconClass(icon, "contact-icon contact-icon-base")} />
-                <span set:html={withIconGradient(icon, gradientId)} />
+                <span class="contact-icon-wrap" set:html={withIconGradient(icon, gradientId)} />
               </a>
             );
           })
